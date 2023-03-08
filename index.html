@@ -622,14 +622,20 @@
                 e.preventDefault(e);
                 const data= new FormData(form);
                 const action= e.target.action;
+                //alert(/^[a-zA-Z]+/.test(data.get("name")));
+                if(/^[a-zA-Z]+/.test(data.get("name")))
+                  {
+                    fetch(action, {
+                    method:'POST',
+                    body: data
 
-                fetch(action, {
-                  method:'POST',
-                  body: data
-
-                }).then(()=>{
-                  alert("Success!")
-                })
+                    }).then(()=>{
+                      alert("Success!")
+                    })
+                  }
+                  else{
+                    alert("Enter valid name")
+                  }
               })
             </script>
           </div>
